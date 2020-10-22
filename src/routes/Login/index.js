@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { Text, Heading, Stack, useTheme, Box, Button, useToast, Flex, Input, Image } from "@chakra-ui/core";
+import { Text, Heading, Stack, useTheme, Box, Button, useToast, Flex, Input, Image, Spinner } from "@chakra-ui/core";
 import { useHistory } from "react-router-dom";
 import { useAppContext } from "../../App/Context";
-// import '../../custom.css'
 import { useFormik } from "formik";
+import { ArrowForwardIcon } from "@chakra-ui/icons";
 
 const LoginRoute = (props) => {
   const theme = useTheme();
@@ -38,10 +38,10 @@ const LoginRoute = (props) => {
       history.push("/");
 
       toast({
-      status:'success',
-      title:"Login success",
-      description:'You are successfully loggedIn'
-    })
+        status:'success',
+        title:"Login success",
+        description:'You are successfully loggedIn'
+      })
     }
   }, [data, history, setAuthenticated, toast]);
 
@@ -72,7 +72,7 @@ const LoginRoute = (props) => {
       </Button>
       {
         loading ? 
-        <Spinner/> : null
+        <Spinner /> : null
       } */}
     </Flex>
     
@@ -93,8 +93,7 @@ const LoginForm = props => {
 
   return(
      <Box textAlign="center" pt='60px' minW='50%'>
-      <Image src="/images/nims_hostel_management_logo.png" d='inline-block' w='300px' alt="Segun Adebayo" /><br/>
-      {/* <Image src="/images/hostel-management-logo.png" mt='15px' d='inline-block' w='180px' alt="Segun Adebayo" /><br/> */}
+      <Image src="/images/logogeneric.png" d='inline-block' w='300px' alt="Your Logo" /><br/>
       
       {/* <Heading as="h4" size="md">NIMS</Heading>
       <Text>Hostel Management</Text> */}
