@@ -1,18 +1,20 @@
 import React, { useEffect } from "react";
 import { Text, Heading, Stack, useTheme, Box, Button, useToast, Flex, Input, Image } from "@chakra-ui/core";
 import { useHistory } from "react-router-dom";
-import { useLoginMutation } from "../../lib/graphql/user/Queries";
 import { useAppContext } from "../../App/Context";
-import '../../custom.css'
+// import '../../custom.css'
 import { useFormik } from "formik";
 
 const LoginRoute = (props) => {
   const theme = useTheme();
   const history = useHistory();
-  const [login, { data, loading, error }] = useLoginMutation();
+  // const [login, { data, loading, error }] = useLoginMutation();
+  const loading = false;
+  const error = null;
+  const data = null;
   
   const _login = (values) => {
-    login({ variables: { data: values } });
+    // login({ variables: { data: values } });
   };
 
   const {setAuthenticated} = useAppContext()

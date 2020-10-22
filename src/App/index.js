@@ -1,7 +1,7 @@
 import React from "react";
 
 import { ChakraProvider } from "@chakra-ui/core";
-import customTheme from "../theme/default.js";
+import customTheme from "../theme";
 import Page from "../Components/Page";
 import AppRouter from "../routes";
 import { AppProvider } from "./AppProvider.js";

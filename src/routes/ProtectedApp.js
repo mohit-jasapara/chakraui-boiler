@@ -20,29 +20,10 @@ import {
 import {
   AiOutlineLogout
 } from "react-icons/ai";
-import Hostel from "./Hostel";
 import { useAppContext } from "../App/Context";
-import { useHostelListQuery } from "../lib/graphql/user/Queries";
-import {  useRecoilValue, useSetRecoilState } from "recoil";
-import { hostelsAtom } from "../atoms/hostels.atom";
-import SearchUser from "./SearchUser";
-
-import UserProfile from "./UserProfile";
-import AddUser from "./AddUser";
-
-import {allCoursesRecoilSelector, departmentsRecoilSelector} from '../atoms/user.atoms'
 
 
 const AppRoutes = props => {
-  const { data, loading} = useHostelListQuery();
-  
-  useRecoilValue(allCoursesRecoilSelector);
-  useRecoilValue(departmentsRecoilSelector);
-  const setHostels = useSetRecoilState(hostelsAtom);
-
-  useEffect(()=> {
-      setHostels({...data, loading })
-  },[data, loading, setHostels])
 
   return (
     <Switch>
@@ -76,16 +57,6 @@ const Dashboard = (props) => {
                 to="/search"
                 icon={<FaRegGrinWink />}
               />
-              {/* <SidebarNavItem
-                title="Students"
-                to="/students"
-                icon={<FaRegGrinWink />}
-              />
-              <SidebarNavItem
-                title="Staff"
-                to="/staff"
-                icon={<FaRegGrinTongue />}
-              /> */}
               <SidebarNavItem
                 title="Add User"
                 to="/add/user"
@@ -118,13 +89,6 @@ const {setAuthenticated} = useAppContext()
         <Flex justifyContent='space-between' w='100%'>
           <Box >
           <BrandNav />
-            {/* <InputGroup m='20px'>
-              <InputLeftElement
-                pointerEvents="none"
-                children={<SearchIcon color="gray.300" />}
-              />
-              <Input type="search" w='500px' borderRadius='20px' placeholder="Search Hostel" />
-            </InputGroup> */}
           </Box>
           <Box>
             <NavIconButton icon={<AiOutlineLogout fontSize='30px' color='#5DADE2'/>} onClick={_logout} />
@@ -142,15 +106,6 @@ const DashboardRoutes = () => {
   return (
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/*/user/:id" component={UserProfile} />
-      <Route path="/search" component={SearchUser} /> 
-      <Route path="/students" component={Test} />
-      <Route path="/staff" component={Home} />
-      {/* <Route path="/hostels" component={Hostel} /> */}
-      <Route path="/hostels/:id?" component={Hostel} />
-
-      <Route path="/add/user" component={AddUser} />
-      <Route path="/user/edit/:id" component={AddUser} />
     </Switch>
   );
 };

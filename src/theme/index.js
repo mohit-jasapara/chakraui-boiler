@@ -1,4 +1,4 @@
-import { theme } from "@chakra-ui/core";
+import { theme, extendTheme } from "@chakra-ui/core";
 
 export default extendTheme({
   styles :{
@@ -26,7 +26,6 @@ export default extendTheme({
     sidebar: {
       bg: "#2a3b50",
     },
-    hostel:hostelColor,
     text:{
       secondary:"#b7b7b7"
     },
