@@ -49,43 +49,41 @@ const LoginRoute = (props) => {
   const setLoginFailed = () => setLoginState({error: {message: 'Login Failed!'}, data: null, loading: false })
 
   return (
-    <>
-    <AlertDialog
-            isOpen={loading}
-            leastDestructiveRef={cancelRef}
-          >
-            <AlertDialogOverlay />
-            <AlertDialogContent>
-              <AlertDialogHeader fontSize="lg" fontWeight="bold">
-                Secure Login
-              </AlertDialogHeader>
-    
-              <AlertDialogBody>
-                Select Login Status
-              </AlertDialogBody>
-    
-              <AlertDialogFooter>
-                <Button ref={cancelRef} onClick={setLoginFailed}>
-                  Failed
-                </Button>
-                <Button variantColor="green" onClick={setLoginSuccess} ml={3}>
-                  Success
-                </Button>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
-    <Flex w={"100%"} h={"100vh"} className='' bg='white' >
-      <Flex h="100vh" w={["100%", "100%", '50%']} className='' align='center' direction='column'>  
-          <LoginForm login={_login} loading={loading}/>
-      </Flex>
-      <Flex h="100vh" w={[0, 0, '50%']} bg='#e6f2ff' justifyContent='center'>
-        <Box>
-          <Image src='/images/login.jpg'/>
-        </Box>
-      </Flex>
-          
-    </Flex>
-    </>
+          <Flex w={"100%"} h={"100vh"} className='' bg='white' >
+            <AlertDialog
+              isOpen={loading}
+              leastDestructiveRef={cancelRef}
+            >
+              <AlertDialogOverlay />
+              <AlertDialogContent>
+                <AlertDialogHeader fontSize="lg" fontWeight="bold">
+                  Secure Login
+                </AlertDialogHeader>
+      
+                <AlertDialogBody>
+                  Select Login Status
+                </AlertDialogBody>
+      
+                <AlertDialogFooter>
+                  <Button ref={cancelRef} onClick={setLoginFailed}>
+                    Failed
+                  </Button>
+                  <Button variantColor="green" onClick={setLoginSuccess} ml={3}>
+                    Success
+                  </Button>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+            <Flex h="100vh" w={["100%", "100%", '50%']} className='' align='center' direction='column'>  
+                <LoginForm login={_login} loading={loading}/>
+            </Flex>
+            <Flex h="100vh" w={[0, 0, '50%']} bg='#e6f2ff' justifyContent='center'>
+              <Box>
+                <Image src='/images/login.jpg'/>
+              </Box>
+            </Flex>
+                
+          </Flex>
   );
 };
 
