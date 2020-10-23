@@ -78,7 +78,7 @@ const {setAuthenticated} = useAppContext()
 
   const _logout = () => {
     setAuthenticated(false)
-    localStorage.removeItem('@login')
+    sessionStorage.removeItem('@login')
   };
 
   const theme = useTheme()
