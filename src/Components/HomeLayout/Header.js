@@ -35,7 +35,7 @@ export const BrandNav = (props) => {
       justifyContent="center"
       h={theme.metrics.header}
     >
-      <Heading color="gray.700" fontSize="xl">NIMS</Heading>
+      <Heading color="gray.700" fontSize="xl">Welcome</Heading>
     </Flex>
   );
 };

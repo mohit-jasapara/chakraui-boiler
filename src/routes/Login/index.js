@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Text, Heading, Stack, useTheme, Box, Button, useToast, Flex, Input, Image, Spinner, AlertDialog, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter } from "@chakra-ui/core";
+import { Heading, Stack, useTheme, Box, Button, useToast, Flex, Input, Image, Popover, PopoverTrigger, PopoverContent, PopoverHeader, PopoverArrow, PopoverCloseButton, PopoverFooter, ButtonGroup } from "@chakra-ui/core";
 import { useHistory } from "react-router-dom";
 import { useAppContext } from "../../App/Context";
 import { useFormik } from "formik";
+import { LockIcon } from "@chakra-ui/icons";
 
 const LoginRoute = (props) => {
-  const theme = useTheme();
   const history = useHistory();
 
   const [loginState, setLoginState] = useState({loading: false, error: null, data: null})
@@ -32,7 +32,7 @@ const LoginRoute = (props) => {
   useEffect(() => {
     if (data) {
       setAuthenticated(true)
-      localStorage.setItem("@login", data.login.access_token)
+      sessionStorage.setItem("@login", data.login.access_token)
 
       history.push("/");
 
@@ -50,32 +50,32 @@ const LoginRoute = (props) => {
 
   return (
           <Flex w={"100%"} h={"100vh"} className='' bg='white' >
-            <AlertDialog
-              isOpen={loading}
-              leastDestructiveRef={cancelRef}
-            >
-              <AlertDialogOverlay />
-              <AlertDialogContent>
-                <AlertDialogHeader fontSize="lg" fontWeight="bold">
-                  Secure Login
-                </AlertDialogHeader>
-      
-                <AlertDialogBody>
-                  Select Login Status
-                </AlertDialogBody>
-      
-                <AlertDialogFooter>
-                  <Button ref={cancelRef} onClick={setLoginFailed}>
-                    Failed
-                  </Button>
-                  <Button variantColor="green" onClick={setLoginSuccess} ml={3}>
-                    Success
-                  </Button>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
             <Flex h="100vh" w={["100%", "100%", '50%']} className='' align='center' direction='column'>  
                 <LoginForm login={_login} loading={loading}/>
+
+                <Popover
+                  returnFocusOnClose={false}
+                  isOpen={loading}
+                  onClose={setLoginFailed}
+                  placement="right"
+                  closeOnBlur={false}
+                >
+                  <PopoverTrigger>
+                    {/* <Button variantColor="pink">Popover Target</Button> */}
+                    <span></span>
+                  </PopoverTrigger>
+                  <PopoverContent zIndex={4}>
+                    <PopoverHeader fontWeight="semibold">Login Action</PopoverHeader>
+                    <PopoverArrow />
+                    <PopoverCloseButton />
+                    <PopoverFooter d="flex" justifyContent="flex-end">
+                      <ButtonGroup size="sm">
+                        <Button colorScheme="red" onClick={setLoginFailed}>Failed</Button>
+                        <Button colorScheme="green" onClick={setLoginSuccess}>Success</Button>
+                      </ButtonGroup>
+                    </PopoverFooter>
+                  </PopoverContent>
+                </Popover>
             </Flex>
             <Flex h="100vh" w={[0, 0, '50%']} bg='#e6f2ff' justifyContent='center'>
               <Box>
@@ -109,7 +109,7 @@ const LoginForm = props => {
         <Stack>
           <Input value={values.username} className='' bg='white'  size='lg' mb='4' onChange={handleChange} name='username' placeholder="Username" />
           <Input onChange={handleChange} className='' bg='white'  size='lg' mb='4' value={values.password} name='password' type='password' placeholder="Password" />
-          <Button isLoading={props.loading} className='inputShadow' loadingText='Logging in...' colorScheme="blue" type='submit'>Secure Login</Button>
+          <Button leftIcon={<LockIcon />} isLoading={props.loading} className='inputShadow' loadingText='Logging in...' colorScheme="blue" type='submit'>Secure Login</Button>
         </Stack>
       </form>
     </Box>  
