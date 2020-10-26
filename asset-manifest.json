@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/chakraui-boiler/static/js/main.fbc613ea.chunk.js",
+    "main.js.map": "/chakraui-boiler/static/js/main.fbc613ea.chunk.js.map",
+    "runtime-main.js": "/chakraui-boiler/static/js/runtime-main.f4f83a80.js",
+    "runtime-main.js.map": "/chakraui-boiler/static/js/runtime-main.f4f83a80.js.map",
+    "static/js/2.60244517.chunk.js": "/chakraui-boiler/static/js/2.60244517.chunk.js",
+    "static/js/2.60244517.chunk.js.map": "/chakraui-boiler/static/js/2.60244517.chunk.js.map",
+    "index.html": "/chakraui-boiler/index.html",
+    "precache-manifest.7f45ae55a1ba584d1597330ab11a9698.js": "/chakraui-boiler/precache-manifest.7f45ae55a1ba584d1597330ab11a9698.js",
+    "service-worker.js": "/chakraui-boiler/service-worker.js",
+    "static/js/2.60244517.chunk.js.LICENSE.txt": "/chakraui-boiler/static/js/2.60244517.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f4f83a80.js",
+    "static/js/2.60244517.chunk.js",
+    "static/js/main.fbc613ea.chunk.js"
+  ]
+}
